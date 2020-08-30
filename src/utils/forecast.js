@@ -17,10 +17,11 @@ const forecast = (lat, long, callback) => {
             callback(`There is an error: ${errorInfo}`, '');
         }
         const current = body.current,
+            humidity = current.humidity || 0,
             temperature = current.temperature || 0,
             feel_like_temperature = current.feelslike || 0;
 
-        callback(undefined, `It's currently ${temperature} degrees out. It feels like ${feel_like_temperature} degrees out.`);
+        callback(undefined, `It's currently ${temperature} degrees out. It feels like ${feel_like_temperature} degrees out. The humidity is ${humidity}`);
     });
 }
 

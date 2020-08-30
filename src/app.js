@@ -5,8 +5,10 @@ const hbs = require('hbs');
 const authorName = 'Harry Lew';
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
+const { env } = require("process");
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public');
@@ -108,6 +110,6 @@ app.get('*', (req, res) => {
 });
 
 //open the port
-app.listen(3000, () => {
-    console.log('server is up on port 3000');
+app.listen(port, () => {
+    console.log(`server is up on port ${port}`);
 });
